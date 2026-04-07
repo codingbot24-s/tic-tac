@@ -12,8 +12,8 @@ const SDL_Color GRID_COLOR = {
 
 const SDL_Color PLAYER_X_COLOR = {
     .r = 255,
-    .g = 255,
-    .b = 255};
+    .g = 50,
+    .b = 50};
 
 const SDL_Color PLAYER_O_COLOR = {
     .r = 50,
@@ -30,12 +30,12 @@ const SDL_Color TIE_COLOR = {
 void render_grid(SDL_Renderer *renderer, const SDL_Color *color)
 {
     SDL_SetRenderDrawColor(renderer, color->r, color->g, color->b, 255);
-    for (size_t i = 1; i < N; i++)
+    for (size_t i = 1; i < N; ++i)
     {
         SDL_RenderDrawLine(
             renderer, i * CELL_WIDTH, 0, i * CELL_WIDTH, SCREEN_HEIGHT);
         SDL_RenderDrawLine(
-            renderer, i * 0, i * CELL_HEIGHT, SCREEN_WIDTH,i * CELL_HEIGHT);
+            renderer,0,i * CELL_HEIGHT, SCREEN_WIDTH, i * CELL_HEIGHT);
     }
 }
 
@@ -56,7 +56,7 @@ void render_running_state(SDL_Renderer *renderer, const struct Game_t *game)
                  &PLAYER_O_COLOR);
 }
 
-void render_game_over(SDL_Renderer *renderer, const struct Game_t *game, const SDL_Color *color)
+void render_game_over(SDL_Renderer* renderer,const struct Game_t* game,const SDL_Color* color)
 {
 
     render_grid(renderer, &GRID_COLOR);

@@ -60,7 +60,7 @@ int main()
       switch (e.type)
       {
       case SDL_QUIT:
-        game.state = QUIT_STATE;
+        game.state =  QUIT_STATE;
         break;
       case SDL_MOUSEBUTTONDOWN:
         click_cell(game, e.button.y / CELL_HEIGHT, e.button.x / CELL_WIDTH);

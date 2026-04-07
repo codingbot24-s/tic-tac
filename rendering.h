@@ -8,6 +8,6 @@
 #define RENDERING_H
 
 void render_game(SDL_Renderer* renderer, const Game_t* game);
-void render_game_over(SDL_Renderer* renderer, const Game_t* game,SDL_Color);
+void render_game_over(SDL_Renderer* renderer, const Game_t* game,const SDL_Color* color);
 
 #endif // RENDERING_H
