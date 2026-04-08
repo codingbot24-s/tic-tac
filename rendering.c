@@ -3,6 +3,7 @@
 #include "game.h"
 #include <SDL2/SDL_pixels.h>
 #include <SDL2/SDL_render.h>
+#include <stdio.h>
 
 const SDL_Color GRID_COLOR = {
     .r = 255,
@@ -59,7 +60,7 @@ void render_running_state(SDL_Renderer *renderer, const struct Game_t *game)
 void render_game_over(SDL_Renderer* renderer,const struct Game_t* game,const SDL_Color* color)
 {
 
-    render_grid(renderer, &GRID_COLOR);
+    render_grid(renderer, color);
     render_board(renderer,
                  game->board,
                  color,
@@ -76,5 +77,14 @@ void render_game(SDL_Renderer *renderer, const struct Game_t *game)
         break;
     case PLAYER_X_WON_STATE:
         render_game_over(renderer, game, &PLAYER_X_COLOR);
+        break;
+    case PLAYER_0_WON_STATE:
+        render_game_over(renderer,game,&PLAYER_O_COLOR);
+        break;        
+    case TIE_STATE:
+         render_game_over(renderer,game,&TIE_COLOR);
+        break;
+    default :{    }
     }
+    
 }
