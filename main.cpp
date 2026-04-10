@@ -32,15 +32,15 @@ int main()
     return -1;
   }
 
-  Game_t game = {
+  struct Game_t game = {
       .board = {
-          PLAYER_X,EMPTY,EMPTY,
+          PLAYER_X,PLAYER_O,PLAYER_O,
           EMPTY,PLAYER_X,EMPTY,
           EMPTY,EMPTY,EMPTY,
           
       },
       .player = PLAYER_X,
-      .state = RUNNING_STATE,
+      .state = TIE_STATE,
   };
 
   SDL_Event e;
@@ -54,7 +54,7 @@ int main()
         game.state = QUIT_STATE;
         break;
       case SDL_MOUSEBUTTONDOWN:
-        click_cell(game, e.button.y / CELL_HEIGHT, e.button.x / CELL_WIDTH);
+        click_cell(&game,e.button.y / CELL_HEIGHT, e.button.x / CELL_WIDTH);
         break;
       default:
       {

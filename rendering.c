@@ -65,6 +65,19 @@ void render_x (
         color->b,
         255
     );
+
+    thickLineRGBA(
+        renderer,
+        center_x + half_box_side, 
+        center_y - half_box_side, 
+        center_x - half_box_side,   
+        center_y + half_box_side, 
+        10,
+        color->r,
+        color->g,
+        color->b,
+        255
+    );
 }
 
 void render_o (
@@ -74,7 +87,30 @@ void render_o (
         const SDL_Color* color
     ) 
 {
+    const float half_box_side = fmin(CELL_WIDTH,CELL_WIDTH) * 0.25;  
+    const float center_x = CELL_WIDTH * 0.5 + column * CELL_WIDTH;
+    const float center_y = CELL_HEIGHT * 0.5 + row * CELL_HEIGHT;
 
+    filledCircleRGBA(
+        renderer,
+        center_x,
+        center_y,
+        half_box_side + 5, 
+        color->r,
+        color->g,
+        color->b,
+        255
+    );
+    filledCircleRGBA(
+        renderer,
+        center_x,
+        center_y,
+        half_box_side - 5,    
+        0,
+        0,
+        0,
+        255
+    );
 }
 
 void render_board(
@@ -136,7 +172,7 @@ void render_game(SDL_Renderer *renderer, const struct Game_t *game)
         render_game_over(renderer,game,&PLAYER_O_COLOR);
         break;        
     case TIE_STATE:
-         render_game_over(renderer,game,&TIE_COLOR);
+        render_game_over(renderer,game,&TIE_COLOR);
         break;
     default :{    }
     }
