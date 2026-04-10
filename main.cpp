@@ -34,15 +34,10 @@ int main()
 
   Game_t game = {
       .board = {
-          EMPTY,
-          EMPTY,
-          EMPTY,
-          EMPTY,
-          EMPTY,
-          EMPTY,
-          EMPTY,
-          EMPTY,
-          EMPTY,
+          PLAYER_X,EMPTY,EMPTY,
+          EMPTY,PLAYER_X,EMPTY,
+          EMPTY,EMPTY,EMPTY,
+          
       },
       .player = PLAYER_X,
       .state = RUNNING_STATE,
